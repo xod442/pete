@@ -1,0 +1,22 @@
+version: 1.0
+
+description: A workflow to copy hpe 3par tasks from mongo and into snow.
+
+tasks:
+  getalerts:
+    action: hpe3par.get_mongo_tasks_2_snow
+    next:
+      - when: <% succeeded() %>
+        publish:
+          - tasks: <% result().result %>
+        do: snow
+
+  snow:
+    with: <% ctx().tasks %>
+    action: servicenow.create_record table="u_aa_3par_tasks" payload='<% item() %>'
+    next:
+      - when: <% succeeded() %>
+        do: processtasks
+
+  processtasks:
+    action: hpe3par.process_3par_tasks tasks=<% ctx().tasks %>

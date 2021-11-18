@@ -1,0 +1,23 @@
+version: 1.0
+
+description: A workflow to copy hpe Nimble alarms from mongo and into snow.
+
+tasks:
+  getalerts:
+    action: hpe3par.get_mongo_volumes_2_nimble
+    next:
+      - when: <% succeeded() %>
+        publish:
+          - volumes: <% result().result %>
+        do: nimble
+
+  nimble:
+    with: <% ctx().volumes %>
+    action: hpenimble.post_volume name='<% item(name) %>' size='<% item(size) %>'
+
+    next:
+      - when: <% succeeded() %>
+        do: processnimble
+
+  processnimble:
+    action: hpe3par.process_nimble_volumes volumes=<% ctx().volumes %>

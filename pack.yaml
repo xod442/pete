@@ -1,0 +1,13 @@
+---
+ref: pete
+name: pete
+description: A pack to test mongo in dockerized stackstorm
+keywords:
+  - docker
+  - stackstorm
+  - mongo
+version: 0.1.0
+python_versions:
+  - "3"
+author: Rick Kauffman
+email: rick.a.kauffman@hpe.com
