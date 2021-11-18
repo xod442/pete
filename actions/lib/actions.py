@@ -23,12 +23,12 @@ from st2common.runners.base_action import Action
 
 
 class MongoBaseAction(Action):
-    def __init__(self):
+    def __init__(self,config):
         super(MongoBaseAction, self).__init__(config=config)
         self.client = self._get_db_client()
 
     def _get_db_client(self):
 
-        client = MongoClient('mongodb://%s:%s@localhost:27017/')
+        client = MongoClient('mongodb://localhost:27017/')
 
         return client
