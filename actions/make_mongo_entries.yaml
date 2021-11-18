@@ -1,6 +1,6 @@
 ---
 name: make_mongo_entries
-pack: hpe3par
+pack: pete
 description: takes a list of dicts and saves them as mongo documents
 runner_type: python-script
 entry_point: make_mongo_entries.py
