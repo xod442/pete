@@ -24,7 +24,7 @@ from st2common.runners.base_action import Action
 
 class MongoBaseAction(Action):
     def __init__(self):
-        super(MongoBaseAction, self)
+        super(MongoBaseAction, self).__init__(config=config)
         self.client = self._get_db_client()
 
     def _get_db_client(self):
