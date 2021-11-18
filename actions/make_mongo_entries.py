@@ -25,7 +25,7 @@ from lib.actions import MongoBaseAction
 
 
 class loadDb(MongoBaseAction):
-    def run(self, tasks):
+    def run(self):
 
         mydb = self.client["app_db"]
         known = mydb["tasks3par"]
