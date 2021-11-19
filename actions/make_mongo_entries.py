@@ -38,9 +38,7 @@ class loadDb(MongoBaseAction):
         new_record = {}
 
         for n in list_o_things:
-            myquery = { "name" : n['name'] }
-            records = known.find(myquery).count()
-            if records == 0:
+            if known.count_documents({"name": n['name']}) == 0:
                 new_record['name'] = n['name']
                 new_record['age'] = n['age']
                 write_record = known.insert_one(new_record)
