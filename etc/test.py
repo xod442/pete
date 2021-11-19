@@ -1,7 +1,9 @@
 from pymongo import MongoClient
 client = MongoClient('mongodb://localhost:27017/')
+print(client)
 
 mydb = client["app_db"]
+
 known = mydb["user"]
 
 l1={"name":"rick", "age":61}

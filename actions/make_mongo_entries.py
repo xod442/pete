@@ -28,7 +28,7 @@ class loadDb(MongoBaseAction):
     def run(self):
 
         mydb = self.client["app_db"]
-        known = mydb["tasks3par"]
+        known = mydb["user"]
 
         l1={"name":"rick", "age":61}
         l2={"name":"bob", "age":21}

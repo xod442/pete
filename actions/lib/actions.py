@@ -29,6 +29,6 @@ class MongoBaseAction(Action):
 
     def _get_db_client(self):
 
-        client = MongoClient('mongodb://localhost:27017/')
+        client = MongoClient('mongodb://172.31.0.2:27017/')
 
         return client
