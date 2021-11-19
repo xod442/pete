@@ -28,7 +28,10 @@ class MongoBaseAction(Action):
         self.client = self._get_db_client()
 
     def _get_db_client(self):
+        # When running on a full install on linux
+        # client = MongoClient('mongodb://localhost:27017/')
 
-        client = MongoClient('mongodb://172.31.0.2:27017/')
+        # When running on st2 docker conttainers using Docker DNS
+        client = MongoClient('mongodb://mongo:27017/')
 
         return client

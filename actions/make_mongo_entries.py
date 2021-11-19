@@ -35,6 +35,8 @@ class loadDb(MongoBaseAction):
         l3={"name":"joe", "age":41}
         list_o_things = [l1,l2,l3]
 
+            records = 'Mongo documents successfully written'
+
         new_record = {}
 
         for n in list_o_things:
@@ -45,6 +47,6 @@ class loadDb(MongoBaseAction):
                 new_record={}
 
             else:
-                records='Fail to write mongo record, possible duplicate'
+                records='Fail to write mongo document, possible duplicate'
                 # write_record = process.insert_one(alarm)
         return (records)
